@@ -3,7 +3,7 @@ import time
 import json
 
 bucket = 'test-uodu-s3'
-key = 'rain_fall_situation.json'
+key = '/japan/ishikawa/asanogawa/rain_fall_trend.json'
 
 def lambda_handler(event, context):
     
@@ -31,7 +31,7 @@ def lambda_handler(event, context):
     for row in tmp_dict:
         rain_fall_situation.append(row['Data'][1]['VarCharValue'])
     
-    # 増加量を判定
+    # ToDo:増加量を判定
     print(rain_fall_situation)
     
     # S3へ

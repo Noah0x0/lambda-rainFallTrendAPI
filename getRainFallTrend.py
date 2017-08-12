@@ -4,13 +4,12 @@ import boto3
 
 client = boto3.client('s3')
 
-def lambda_handler(event, context):
-    bucket = 'test-uodu-s3'
-    key = 'rain_fall_situation.json'
+bucket = 'test-uodu-s3'
+key = '/japan/ishikawa/asanogawa/rain_fall_trend.json'
 
+def lambda_handler(event, context):
     try:
         response = client.get_object(Bucket=bucket, Key=key)
-
         body = response['Body'].read().decode('utf-8')
         result = json.loads(body)
         return result
