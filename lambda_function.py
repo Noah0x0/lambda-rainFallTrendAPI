@@ -5,12 +5,12 @@ import boto3
 client = boto3.client('s3')
 
 bucket = 'test-uodu-s3'
-target = 'rainFall'
+target = 'trend'
 
 def get_rainfall_trend(key):
     response = client.get_object(Bucket=bucket, Key=key)
     body = response['Body'].read().decode('utf-8')
-    return json.dumps(body)
+    return body
 
 def set_response_body(status_code, body):
     headers = {}
@@ -36,7 +36,7 @@ def lambda_handler(event, context):
         country = params['country']
         prefectures = params['prefectures']
         river = params['river']
-        key = target + '/' + country + '/' + prefectures + '/' + river + '/trend.json'
+        key = target + '/' + country + '/' + prefectures + '/' + river + '/trendRainFall.json'
     else:
         return set_response_body(400, 'Bad Request')
     
