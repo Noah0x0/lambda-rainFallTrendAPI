@@ -1,5 +1,5 @@
 {
-  "queryStringParameters": {
+  "pathParameters": {
     "country": "taiwan",
     "prefectures": "Taipei",
     "river": "Danshui"

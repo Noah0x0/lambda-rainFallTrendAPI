@@ -7,11 +7,11 @@
 
 ## Request
 Method : GET  
-Endpoint : /production/rain-fall-trend/japan/tokyo/arakawa   
+Endpoint : /production/rain-fall-trend/{country}/{prefectures}/{river}   
 Parameter :   
-1. japan : 国名を指定 ex)japan, taiwan   
-2. tokyo : 都道府県を指定 ex)tokyo, taipei   
-3. arakawa : 河川名を指定 ex)arakawa, danshui   
+1. {country} : 国名を指定 ex)japan, taiwan   
+2. {prefectures} : 都道府県を指定 ex)tokyo, taipei   
+3. {river} : 河川名を指定 ex)arakawa, danshui   
 
 ## Response
 
