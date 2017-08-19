@@ -15,7 +15,7 @@ def get_rainfall_trend(key):
 def set_response_body(status_code, body):
     headers = {}
     headers['Content-Type'] = 'application/json'
-
+    
     res_body = {}
     res_body['statusCode'] = status_code
     res_body['headers'] = headers
@@ -26,10 +26,10 @@ def set_response_body(status_code, body):
 def lambda_handler(event, context):
 
     # クエリが渡されてない場合$
-    if (event['queryStringParameters'] is None):
-        return set_response_body(400, 'Bad Request')
+    if (event['pathParameters'] is None):
+        return set_response_body(400, 'Bad Request No PathParameters')
     else:
-        params = event['queryStringParameters']
+        params = event['pathParameters']
         
     # クエリパラメータが不正な場合のデフォルトを荒川に
     if (set(params) >= {'country', 'prefectures', 'river'}):
@@ -38,7 +38,7 @@ def lambda_handler(event, context):
         river = params['river']
         key = target + '/' + country + '/' + prefectures + '/' + river + '/trendRainFall.json'
     else:
-        return set_response_body(400, 'Bad Request')
+        return set_response_body(400, 'Bad Request No Item')
     
     try:
         json_str = get_rainfall_trend(key)
@@ -46,4 +46,4 @@ def lambda_handler(event, context):
         return set_response_body(200, json_str)
     except Exception as e:
         print(e)
-        return set_response_body(400, 'Bad Request')
+        return set_response_body(500, 'File Not Found')
