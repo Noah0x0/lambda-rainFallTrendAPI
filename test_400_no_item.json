@@ -1,0 +1,6 @@
+{
+  "pathParameters": {
+    "country": "taiwan",
+    "prefectures": "Taipei"
+  }
+}
